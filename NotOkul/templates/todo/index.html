@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}
+  {{block.super}}  Görevler
+{% endblock %}
+
+{% block body %}
+<span onclick="">
+<h3>Görev Ekle <i onclick="visibleToDo()" class="fas fa-angle-down " id="createToDo"></i> </h3>
+</span>
+<hr style="width: 9%; margin-top:5px;">
+
+<div id="formToDo" style="display: none;">
+  <form method="post" enctype="multipart/form-data" class="form-inline" >
+    {%csrf_token%}
+     {{form}}<br>
+          <input class="btn btn-secondary submitTD" type="submit" value="Kaydet">
+    </form>
+</div>
+
+
+<br><br>
+<table class="table">
+  <thead>
+    <tr >
+      <th scope="col"> Başlık</th>
+      <th scope="col">Çözülecek Soru </th>
+      <th scope="col"> Çalışılacak Süre(dk) </th>
+      <th scope="col">Tarih</th>
+      <th scope="col"> Durum </th>
+      <th scope="col">Sil</th>
+      <th scope="col">Tamamla</th>
+      <th scope="col">Güncelle</th>
+
+    </tr>
+  </thead>
+  {% for post in posts  %}
+  <tbody>
+
+    <tr>
+{% if post.status == True %}
+      <td style="text-decoration: line-through	;">
+
+        {{post.title}}
+  </td>
+
+{% else %}
+<td>
+
+  {{post.title}}
+</td>
+
+      {% endif %}
+
+      <td>{{post.question}}</td>
+      <td>{{post.time}}</td>
+      <td>{{post.created_date}}</td>
+      <td>  {% if post.status == False %} <b style="color:tomato;"> Tamamlanmadı </b> {% else %} <b style="color:green;"> Tamamlandı </b> {% endif %}  </td>
+      <td> <button type="button" style="font-size:90%; " class="btn btn-info ">  <a style="color:#f7f7f7"  href="{% url 'todo:delete' post.id %} ">Sil</a></button></td>
+       {% if post.status == False %}
+      <td> <button type="button" style="font-size:90%; " class="btn btn-info ">  <a style="color:#f7f7f7"  href="{% url 'todo:complete' post.id %}">Tamamladım</a></button></td>
+       {% else %}
+       <td> <button type="button" style="font-size:90%; " class="btn btn-info ">  <a style="color:#f7f7f7"  href="{% url 'todo:complete' post.id %}">Tamamlamadım</a></button></td>
+       {% endif %}
+       <td> <button type="button" style="font-size:90%; " class="btn btn-info ">  <a style="color:#f7f7f7"  href="{% url 'todo:update' post.id %}">Güncelle</a></button></td>
+
+
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+
+{% endblock %}

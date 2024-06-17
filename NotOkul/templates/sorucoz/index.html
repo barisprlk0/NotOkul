@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block body %}
+
+
+
+<canvas id="myChart"></canvas>
+
+<script>
+
+  const labels = [ {% for item in qs %}
+
+'{{item.name}}',
+
+      {% endfor %}
+
+  ];
+
+  const data = {
+    labels: labels,
+    datasets: [{
+      label: 'My First dataset',
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [  {% for item in qs%}
+        {{item.money}},
+              {% endfor %}
+      ],
+    }]
+  };
+
+  const config = {
+    type: 'bar',
+    data: data,
+    options: {}
+  };
+</script>
+<script>
+  const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+</script>
+
+<style media="screen">
+  html,body {
+    zoom:100%;
+  }
+</style>
+{% endblock %}

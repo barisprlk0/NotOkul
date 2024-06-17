@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block title %}
+  {{block.super}} Profil
+{% endblock %}
+
+{% block body %}
+
+<h3 style="text-align:center;">Hoşgeldin , {{request.user.username}}</h4>
+<hr style="width:30%; margin:auto;"><br>
+<br>
+<button type="button" class="btn btn-primary" style="opacity:85%;display:block; margin:auto; margin-top:-1.2rem"> <a style =  "color:white; margin:2rem;   " href="{% url 'school:create' %}"> Ekle </a> </button>
+<br>
+<hr>
+<br>
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col" >Tarih</th>
+      <th scope="col">Ders</th>
+      <th scope="col">Konu</th>
+      <th scope="col">Çalışma Süresi (Dakika)</th>
+      <th scope="col">Soru Sayısı</th>
+      <th scope="col">Sil</th>
+      <th scope="col">Güncelle</th>
+    </tr>
+  </thead>
+  {% for post in posts  %}
+
+
+  <tbody>
+    <tr>
+
+
+
+
+      <th scope="row" id="date">{{post.publishing_date |date:'j F Y l'}}</th>
+      <td>{{post.lesson}}</td>
+      <td>{{post.subject}}</td>
+      <td>{{post.time}}</td>
+      <td >{{post.question}} </td>
+
+      <td> <button type="button" style="font-size:70%; " class="btn btn-primary ">  <a style="color:#f7f7f7"  href="{% url 'school:delete' id=post.id %}">Sil</a></button></td>
+      <td> <button type="button" style="font-size:70%; " class="btn btn-primary ">  <a style="color:#f7f7f7"  href="{% url 'school:update' id=post.id %}">Güncelle</a></button></td>
+
+    </tr>
+    {% endfor %}
+
+  </tbody>
+</table>
+
+
+{% endblock %}

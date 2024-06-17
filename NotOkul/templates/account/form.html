@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+{{block.super}} Hoşgeldiniz
+{% endblock %}
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+         <h1 style="text-align:center;"> Hoşgeldin Öğrenci  </h1>
+
+          {{form | crispy}}
+
+
+
+          <input class="btn btn-secondary" type="submit" value="Gönder">
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

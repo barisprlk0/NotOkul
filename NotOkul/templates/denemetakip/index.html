@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% block title %}
+  {{block.super}} Deneme Takip
+{% endblock %}
+{% load static %}
+
+{% block body %}
+<style media="screen">
+
+  html,body {
+    zoom:100%;
+  }
+
+</style>
+
+
+
+
+
+<br>
+<div class="text-center">
+
+ <a href="{% url 'denemetakip:create' %}" class="btn btn-danger px-5 py-2 mx-4" >TYT Denemesi Ekle </a>
+ <a href="{% url 'denemetakip:createAYT' %}" class="btn btn-warning px-5 py-2 mx-4" >AYT Denemesi Ekle </a>
+
+</div>
+<br><br>
+<h3 class='text-center mt-5 mb-0'> TYT Denemeleri </h3>
+<table class="table table-hover mt-2 TYTtable">
+  <thead>
+    <tr>
+
+    <th>#</th>
+    <th>Deneme Adı</th>
+    <th>Deneme Tarihi</th>
+    <th>Toplam Net</th>
+    <th>Yayınevi</th>
+    <th>Sil</th>
+    <th>Güncelle</th>
+  </tr>
+  </thead>
+  <tbody>
+    {% for element in set  %}
+    <tr>
+
+    <td>#</td>
+    <td>{{element.title}}</td>
+    <td>{{element.created_date}}</td>
+    <td>{{element.netSayisi}}</td>
+    <td>{{element.publisher}}</td>
+    <td> <a href="{% url 'denemetakip:delete' id=element.id %}" class="btn btn-danger"> Sil </a> </td>
+    <td> <a href="{% url 'denemetakip:update' id=element.id %}" class="btn btn-danger"> Güncelle </a> </td>
+  </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<br><br><br>
+
+
+<h3 class='text-center mt-5 mb-0'> AYT Denemeleri </h3>
+<table class="table table-hover mt-2 AYTtable">
+  <thead>
+    <tr>
+
+      <th>#</th>
+      <th>Deneme Adı</th>
+      <th>Deneme Tarihi</th>
+      <th>Toplam Net</th>
+      <th>Yayınevi</th>
+      <th>Sil</th>
+      <th>Güncelle</th>
+  </tr>
+  </thead>
+  <tbody>
+    {% for element in setAYT  %}
+    <tr>
+
+    <td>#</td>
+    <td>{{element.title}}</td>
+    <td>{{element.created_date}}</td>
+    <td>{{element.netSayisi}}</td>
+    <td>{{element.publisher}}</td>
+    <td> <a href="{% url 'denemetakip:deleteAYT' id=element.id %}" class="btn btn-warning"> Sil </a> </td>
+    <td> <a href="{% url 'denemetakip:updateAYT' id=element.id %}" class="btn btn-warning"> Güncelle </a> </td>
+  </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<br><br>
+
+<br><br>
+
+
+
+
+
+
+<h1>Grafikler</h1>
+
+  <canvas id="tytChart" ></canvas>
+
+  <script>
+
+
+
+
+
+
+
+
+
+
+    const labels = [ {% for item in set %}
+
+  '{{item.title}} ',
+
+        {% endfor %}
+
+    ];
+
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'TYT Genel Net Grafiği',
+        backgroundColor: 'rgb(55, 99, 132)',
+        borderColor: 'rgb(55, 99, 132)',
+
+        data: [  {% for item in set %}
+          {{item.netSayisi}},
+                {% endfor %}
+        ],
+      }]
+    };
+
+    const config = {
+      type: 'line',
+      data: data,
+      options: {}
+    };
+  </script>
+  <script>
+    const myChart = new Chart(
+      document.getElementById('tytChart'),
+      config
+    );
+  </script>
+
+  {% endblock %}

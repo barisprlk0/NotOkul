@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+{{block.super}} Merhaba Öğrenci
+{% endblock %}
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h3> Merhaba Öğrenci!</h3>
+
+      <form method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+
+          {{form | crispy}}
+
+
+
+          <input class="btn btn-secondary" type="submit" value="Kaydet">
+      </form>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

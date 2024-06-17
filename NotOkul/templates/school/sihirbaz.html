@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block title %}
+  {{block.super}} Test Kitabı Sihirbazı
+{% endblock %}
+{% block body %}
+<h3 style="text-align:center;">Test Kitabı Sihirbazı</h3>
+<hr>
+<br>
+
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <form method="post" enctype="multipart/form-data">
+      {%csrf_token%}
+       <h1 style="text-align:center;"> Hoşgeldin Öğrenci  </h1>
+       <p style="text-align:center; font-weight:bold;" >Haydi Sana Göre Bir Kitap Bulalım</p><br><br>
+ {% load crispy_forms_tags %}
+        {{form | crispy}}
+
+
+
+        <input class="btn btn-secondary" type="submit" value="Gönder" style="display:block; margin:auto;">
+    </form>
+
+<br>
+<h2 style="text-align:center;"> Yayın Önerimiz </h2>
+<hr>
+<!-- TYT TÜRKÇE -->
+<h4 id="sihirbaz"> {% if tytturkce_level1 %} {{tytturkce_level1}} <br> <small style="text-align:center;">  <a target="_blank" href="https://t.ly/cxdQ"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+<h4 id="sihirbaz"> {% if tytturkce_level2 %} {{tytturkce_level2}} <br> <small style="text-align:center;">  <a target="_blank" href="https://t.ly/2hWf"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+<h4 id="sihirbaz"> {% if tytturkce_level3 %} {{tytturkce_level3}} <br> <small style="text-align:center;">  <a target="_blank" href="https://t.ly/ehIt"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+<h4 id="sihirbaz"> {% if tytturkce_level4 %} {{tytturkce_level4}} <br> <small style="text-align:center;">  <a target="_blank" href="https://t.ly/LqB6"> Tıkla Satın Al </a> </small> {% endif %} </p>
+<h4 id="sihirbaz"> {% if tytturkce_level5 %} {{tytturkce_level5}} <br> <small style="text-align:center;">  <a target="_blank" href="https://t.ly/fkdv"> Tıkla Satın Al </a> </small> {% endif %} </p>
+
+<!-- TYT MATEMATİK -->
+<h4 id="sihirbaz"> {% if tytmat_level1 %} {{tytmat_level1}} <br> <small style="text-align:center;">  <a target="_blank" href="https://t.ly/WNVD"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+<h4 id="sihirbaz"> {% if tytmat_level2 %} {{tytmat_level2}} <br> <small style="text-align:center;">  <a target="_blank" href="https://t.ly/Xtdn"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+<h4 id="sihirbaz"> {% if tytmat_level3 %} {{tytmat_level3}} <br> <small style="text-align:center;">  <a target="_blank" href="https://t.ly/hp7R"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+<h4 id="sihirbaz"> {% if tytmat_level4 %} {{tytmat_level4}} <br> <small style="text-align:center;">  <a target="_blank" href="https://t.ly/FTx8"> Tıkla Satın Al </a> </small> {% endif %} </p>
+<h4 id="sihirbaz"> {% if tytmat_level5 %} {{tytmat_level5}} <br> <small style="text-align:center;">  <a target="_blank" href="https://t.ly/DXGs"> Tıkla Satın Al </a> </small> {% endif %} </p>
+
+
+  <!-- AYT MATEMATİK -->
+  <h4 id="sihirbaz"> {% if aytmat_level1 %} {{aytmat_level1}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+  <h4 id="sihirbaz"> {% if aytmat_level2 %} {{aytmat_level2}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+  <h4 id="sihirbaz"> {% if aytmat_level3 %} {{aytmat_level3}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+  <h4 id="sihirbaz"> {% if aytmat_level4 %} {{aytmat_level4}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </p>
+  <h4 id="sihirbaz"> {% if aytmat_level5 %} {{aytmat_level5}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </p>
+
+
+    <!-- AYT FİZİK -->
+    <h4 id="sihirbaz"> {% if aytfizik_level1 %} {{aytfizik_level1}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+    <h4 id="sihirbaz"> {% if aytfizik_level2 %} {{aytfizik_level2}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+    <h4 id="sihirbaz"> {% if aytfizik_level3 %} {{aytfizik_level3}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+    <h4 id="sihirbaz"> {% if aytfizik_level4 %} {{aytfizik_level4}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </p>
+    <h4 id="sihirbaz"> {% if aytfizik_level5 %} {{aytfizik_level5}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </p>
+
+    <!-- AYT KİMYA -->
+    <h4 id="sihirbaz"> {% if aytkimya_level1 %} {{aytkimya_level1}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+    <h4 id="sihirbaz"> {% if aytkimya_level2 %} {{aytkimya_level2}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+    <h4 id="sihirbaz"> {% if aytkimya_level3 %} {{aytkimya_level3}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+    <h4 id="sihirbaz"> {% if aytkimya_level4 %} {{aytkimya_level4}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </p>
+    <h4 id="sihirbaz"> {% if aytkimya_level5 %} {{aytkimya_level5}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </p>
+
+    <!-- AYT Biyoloji -->
+    <h4 id="sihirbaz"> {% if aytbiyoloji_level1 %} {{aytbiyoloji_level1}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+    <h4 id="sihirbaz"> {% if aytbiyoloji_level2 %} {{aytbiyoloji_level2}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+    <h4 id="sihirbaz"> {% if aytbiyoloji_level3 %} {{aytbiyoloji_level3}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </h4>
+    <h4 id="sihirbaz"> {% if aytbiyoloji_level4 %} {{aytbiyoloji_level4}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </p>
+    <h4 id="sihirbaz"> {% if aytbiyoloji_level5 %} {{aytbiyoloji_level5}} <br> <small style="text-align:center;">  <a target="_blank" href="#"> Tıkla Satın Al </a> </small> {% endif %} </p>
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+</div>
+</form>
+{% endblock %}

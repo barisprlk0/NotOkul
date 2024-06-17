@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}
+  {{block.super}} İletişim
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <form method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+         <h1> E-Posta Gönder! </h1>
+          {{form | crispy}}<br>
+          <input style = "margin-bottom:15%;" class="btn btn-secondary" type="submit" value="Yayınla">
+      </form>
+    </div>
+    <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+      <div class="sidebar-module sidebar-module-inset">
+
+  </div>
+</div>
+
+{% endblock %}

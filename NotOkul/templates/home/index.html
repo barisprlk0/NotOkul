@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+{% block title %}
+  {{block.super}} AnaSayfa
+{% endblock %}
+
+{% block body %}
+  <br>
+<!-- buttonlar -->
+<div class="buttons">
+
+<button type="button" class="btn btn-dark" onclick="hideTYT()" id="tythidden"> TYT Derslerini Gizle </button>
+<button type="button" class="btn btn-dark" onclick="visibleTYT()" style="display:none;" id="tytvisible"> TYT Derslerini Göster </button>
+
+<button type="button" class="btn btn-dark" onclick="hideAYT()" id="aythidden"> AYT Derslerini Gizle </button>
+<button type="button" class="btn btn-dark" onclick="visibleAYT()" style="display:none;" id="aytvisible"> AYT Derslerini Göster </button>
+</div>
+<br>
+<!-- TYT -->
+<div id="alltyt">
+
+
+<h2 style="text-align:center;">TYT </h2>
+<hr>
+<br>
+  <div class="row">
+
+      <div class=" tyt">
+        <h3>TYT Türkçe</h3> <hr>
+        <p style="color:#f7f7f7;"> Toplam Çözülen Soru: {{turkce_soru}}  </p>
+        <p style="color:#f7f7f7; "> Toplam Çalışılan Süre:  {{turkce_zaman}}</p>
+        <br>
+        <a href="#">      <button type="button" class="btn btn-btn-secondary"> Tıkla </button> </a>
+       </div>
+
+      <div class=" tyt"> <h3>TYT Matematik</h3><hr>
+        <p style="color:#f7f7f7;"> Toplam Çözülen Soru: {{matematik_soru}} </p>
+        <p style="color:#f7f7f7; "> Toplam Çalışılan Süre:  {{matematik_zaman}} </p>
+        <br>
+        <a href="#">      <button type="button" class="btn btn-btn-secondary"> Tıkla </button> </a>
+      </div>
+
+      <div class=" tyt"> <h3>TYT Sosyal Bilimler</h3> <hr>
+        <p style="color:#f7f7f7;"> Toplam Çözülen Soru: {{sosyal_soru}} </p>
+        <p style="color:#f7f7f7; "> Toplam Çalışılan Süre:  {{sosyal_zaman}}</p>
+        <br>
+        <a href="{% url 'home:home' %}">      <button type="button" class="btn btn-btn-secondary"> Tıkla </button> </a>
+       </div>
+
+      <div class=" tyt"> <h3>TYT Fizik</h3><hr>
+        <p style="color:#f7f7f7;"> Toplam Çözülen Soru: {{fizik_soru}}  </p>
+        <p style="color:#f7f7f7; "> Toplam Çalışılan Süre:  {{fizik_zaman}}</p>
+        <br>
+        <a href="{% url 'home:home' %}">      <button type="button" class="btn btn-btn-secondary"> Tıkla </button> </a>
+       </div>
+
+       <div class=" tyt"> <h3>TYT Kimya</h3><hr>
+         <p style="color:#f7f7f7;"> Toplam Çözülen Soru: {{kimya_soru}}  </p>
+         <p style="color:#f7f7f7; "> Toplam Çalışılan Süre:  {{kimya_zaman}}</p>
+         <br>
+         <a href="{% url 'home:home' %}">      <button type="button" class="btn btn-btn-secondary"> Tıkla </button> </a>
+        </div>
+
+        <div class=" tyt"> <h3>TYT Biyoloji</h3><hr>
+          <p style="color:#f7f7f7;"> Toplam Çözülen Soru: {{biyoloji_soru}}  </p>
+          <p style="color:#f7f7f7; "> Toplam Çalışılan Süre:  {{biyoloji_zaman}}</p>
+          <br>
+          <a href="{% url 'home:home' %}">      <button type="button" class="btn btn-btn-secondary"> Tıkla </button> </a>
+         </div>
+    </div>
+
+</div>
+
+
+
+
+<!-- AYT -->
+
+<div id="allayt">
+
+
+<h2 style="text-align:center;"> AYT </h2>
+<hr>
+<br>
+  <div class="row">
+
+      <div class="col ayt">
+        <h3>AYT Matematik</h3> <hr>
+        <p style="color:#f7f7f7;"> Toplam Çözülen Soru: {{aytmatematik_soru}}  </p>
+        <p style="color:#f7f7f7; "> Toplam Çalışılan Süre:  {{aytmatematik_zaman}}</p>
+        <br>
+        <a href="{% url 'home:home' %}">      <button type="button" class="btn btn-btn-secondary"> Tıkla </button> </a>
+       </div>
+
+      <div class="col ayt"> <h3>AYT Fizik</h3><hr>
+        <p style="color:#f7f7f7;"> Toplam Çözülen Soru: {{aytfizik_soru}} </p>
+        <p style="color:#f7f7f7; "> Toplam Çalışılan Süre:  {{aytfizik_zaman}} </p>
+        <br>
+        <a href="{% url 'home:home' %}">      <button type="button" class="btn btn-btn-secondary"> Tıkla </button> </a>
+      </div>
+
+      <div class="col ayt"> <h3> AYT Kimya</h3> <hr>
+        <p style="color:#f7f7f7;"> Toplam Çözülen Soru: {{aytkimya_soru}} </p>
+        <p style="color:#f7f7f7; "> Toplam Çalışılan Süre:  {{aytkimya_zaman}}</p>
+        <br>
+        <a href="{% url 'home:home' %}">      <button type="button" class="btn btn-btn-secondary"> Tıkla </button> </a>
+       </div>
+
+      <div class="col ayt"> <h3> AYT Biyoloji</h3><hr>
+        <p style="color:#f7f7f7;"> Toplam Çözülen Soru: {{aytbiyoloji_soru}}  </p>
+        <p style="color:#f7f7f7; "> Toplam Çalışılan Süre:  {{aytbiyoloji_zaman}}</p>
+        <br>
+        <a href="{% url 'home:home' %}">      <button type="button" class="btn btn-btn-secondary"> Tıkla </button> </a>
+       </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+{% endblock %}
