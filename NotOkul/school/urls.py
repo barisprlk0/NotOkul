@@ -1,12 +1,10 @@
-from django.conf.urls import url,include
+from django.urls import re_path
 from .views import *
-from django.urls import path
 
 app_name = 'school'
 urlpatterns = [
-
-    path('create', create ,name = "create"),
-    path('delete/<int:id>/', delete, name="delete"),
-    path('update/<int:id>/', update, name="update"),
-    path('testsihirbazi',sihirbaz,name = "sihirbaz")
+    re_path(r'^create$', create, name="create"),
+    re_path(r'^delete/(?P<id>\d+)/$', delete, name="delete"),
+    re_path(r'^update/(?P<id>\d+)/$', update, name="update"),
+    re_path(r'^testsihirbazi$', sihirbaz, name="sihirbaz"),
 ]

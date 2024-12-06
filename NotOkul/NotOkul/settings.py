@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     
     'django_cleanup',
-    'chartit',
     'home',
     'account',
     'school',
